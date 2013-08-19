@@ -4,20 +4,17 @@
 		<meta charset="utf-8">
 		<title>A new take on Windows 8</title>
 		<link rel="stylesheet" href="css/metro-bootstrap.css">
-		<script src="js/angular.1.1.4.min.js"></script>
+		<script src="js/angular.js"></script>
+		<script src="js/controllers.js"></script>
 	<body>
-<<<<<<< HEAD
-		<input type="text" id="search" placeholder="search" ng-model="search"/>
+		<input type="text" id="search" placeholder="search"/>
 		<div id="desktop"></div>
 		<div id="start" ng-controller="AppListCtrl">
-			<ul class="thumbnails apps">
-				<li ng-repeat="app in apps | filter:search" class="span3 tile">
+			<ul class="thumbnails">
+				<li ng-repeat="app in apps" class="span3 tile">
 					{{app.name}}
 				</li>
 			</ul>
 		</div>
-=======
-	nothing here
->>>>>>> parent of cd0cd64... showing apps
 	</body>
 </html>
