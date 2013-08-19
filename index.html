@@ -7,11 +7,11 @@
 		<script src="js/angular.js"></script>
 		<script src="js/controllers.js"></script>
 	<body>
-		<input type="text" id="search" placeholder="search"/>
+		<input type="text" id="search" placeholder="search" ng-model="search"/>
 		<div id="desktop"></div>
 		<div id="start" ng-controller="AppListCtrl">
-			<ul class="thumbnails">
-				<li ng-repeat="app in apps" class="span3 tile">
+			<ul class="thumbnails apps">
+				<li ng-repeat="app in apps | filter:search" class="span3 tile">
 					{{app.name}}
 				</li>
 			</ul>
