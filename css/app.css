@@ -1,0 +1,95 @@
+#search {
+	position: absolute;
+	top: 40px;
+	right: 200px;
+}
+
+.modal-cover{
+	box-sizing:border-box;
+	color: rgba(0,0,0,0.5);
+	height: 100%;
+	width: 100%;
+	position:absolute;
+	top:0px;
+}
+
+#desktop {
+	transition-property: all;
+  	transition-duration: 250ms;
+  	transition-timing-function: ease-in-out;
+	width: 15%;
+	height: 100%;
+	box-sizing: border-box;
+	float: left;
+	position:absolute;
+	background-color: red;
+}
+body.desktop #desktop{
+	transition-property: all;
+  	transition-duration: 250ms;
+  	transition-timing-function: ease-in-out;
+	width:85%;
+	left:0;
+}
+body.desktop #desktop .modal-cover, body.apps #apps .modal-cover{
+	display:none;
+}
+body.desktop #apps{
+	width:15%;
+}
+#apps{
+	transition-property: all;
+  	transition-duration: 250ms;
+  	transition-timing-function: ease-in-out;
+	width: 85%;
+	height: 100%;
+	position:absolute;
+	right:0px;
+	float:left;
+	background-color: grey;
+}
+
+#apps ul {
+	height: 450px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	margin-left:30px;
+	padding-bottom:40px;
+	position: absolute;
+	top: 120px;
+}
+
+.desktop #desktop h1,.apps #apps h1 {
+	transition-property: all;
+  	transition-duration: 250ms;
+  	transition-timing-function: ease-in-out;
+  	position: relative;
+  	left: 50px;
+
+}
+
+.desktop #apps h1, .apps #desktop h1 {
+	transition-property: all;
+  	transition-duration: 250ms;
+  	transition-timing-function: ease-in-out;
+	font-size: 18pt;
+	position: absolute;
+	top: 20px;
+	left:15px;
+}
+
+.app-tile {
+	height:100px;
+	width: 100px;
+	background-color: blue;
+	position: relative;
+	float: none;
+}
+
+.app-tile .name{
+	position: absolute;
+	bottom: 0;
+	left: 7px;
+	color: #fff;
+	font-size: 8pt;
+}

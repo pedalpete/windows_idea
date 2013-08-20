@@ -1,3 +1,16 @@
+
+function DesktopCtrl($scope) {
+	$scope.views=['apps','desktop','temp']
+	$scope.activeView=$scope.views[0]
+	$scope.toggleActive = function(){
+		if($scope.activeView==$scope.views[0]){
+			$scope.activeView=$scope.views[1];
+		} else {
+			$scope.activeView=$scope.views[0]
+		}
+	}
+}
+
 function AppListCtrl($scope){
 	$scope.apps = [
 		{"name":"explorer"},

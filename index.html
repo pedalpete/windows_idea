@@ -4,17 +4,27 @@
 		<meta charset="utf-8">
 		<title>A new take on Windows 8</title>
 		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link rel="stylesheet" href="css/app.css">
 		<script src="js/angular.js"></script>
 		<script src="js/controllers.js"></script>
-	<body ng-controller="DesktopCtrl">
-		<input type="text" id="search" placeholder="search" ng-model="search"/>
-		<div id="desktop" ></div>
-		<div id="start" ng-controller="AppListCtrl">
+	</head>
+	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps'}">
+		<div id="desktop">
+			
+			<h1>Desktop</h1>
+			<div class="modal-cover" ng-click="toggleActive()"></div>
+		</div>
+		<div class="active" id="apps" ng-controller="AppListCtrl" >
+			
+			<h1>Apps</h1>
 			<ul class="apps thumbnails search">
-				<li ng-repeat="app in apps | filter:search" class="span3 tile">
-					{{app.name}}
+				<li ng-repeat="app in apps | filter:search" class="app-tile">
+					<div class="name">{{app.name}}</div>
 				</li>
 			</ul>
+			<div class="modal-cover" ng-click="toggleActive()"></div>
 		</div>
+		<input type="text" id="search" placeholder="search" ng-model="search"/>
+	
 	</body>
 </html>
