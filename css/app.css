@@ -78,14 +78,28 @@ body.desktop #apps{
 	left:15px;
 }
 
+ul.apps {
+	list-style-type: none;
+}
+.app-block {
+	float: left;
+	height: 100%;
+	width: 250px;
+	margin-left: 50px;
+}
+
 .app-tile {
 	height:100px;
 	width: 100px;
 	background-color: blue;
 	position: relative;
-	float: none;
+	margin: 4px;
+	float: left;
 }
 
+.app-tile.double {
+	width: 208px;
+}
 .app-tile .name{
 	position: absolute;
 	bottom: 0;
@@ -93,3 +107,5 @@ body.desktop #apps{
 	color: #fff;
 	font-size: 8pt;
 }
+
+

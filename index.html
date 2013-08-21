@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="app">
 	<head>
 		<meta charset="utf-8">
 		<title>A new take on Windows 8</title>
@@ -17,14 +17,16 @@
 		<div class="active" id="apps" ng-controller="AppListCtrl" >
 			
 			<h1>Apps</h1>
-			<ul class="apps thumbnails search">
-				<li ng-repeat="app in apps | filter:search" class="app-tile">
-					<div class="name">{{app.name}}</div>
-				</li>
+			<ul class="apps search">
+				<div ng-repeat="block in apps | filter:search | partition:6" class="app-block" >
+					<li ng-repeat="app in block" class="app-tile" ng-class="{double:app.width=='double'}">
+						<div class="name">{{app.name}}</div>
+					</li>
+				</div>
 			</ul>
 			<div class="modal-cover" ng-click="toggleActive()"></div>
 		</div>
-		<input type="text" id="search" placeholder="search" ng-model="search"/>
+		<input type="text" id="search" placeholder="search" ng-model="search.name"/>
 	
 	</body>
 </html>
