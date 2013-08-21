@@ -6,10 +6,21 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 		$scope.toggleActive = function(){
 			if($scope.activeView==$scope.views[0]){
 				$scope.activeView=$scope.views[1];
+				$scope.search.name='';
 			} else {
 				$scope.activeView=$scope.views[0]
 			}
 		}
+		$scope.$watch('search.name',function(){
+			var search = $scope.search.name;
+
+			if($scope.activeView==$scope.views[1] && search.length>0){
+				$scope.activeView=$scope.views[2];
+			}
+			 if (search.length==0 && $scope.activeView==$scope.views[2]){
+				$scope.activeView=$scope.views[1];
+			}
+		})
 	}]);
 app.controller('AppListCtrl',['$scope',function($scope){
 		$scope.apps = [
@@ -72,4 +83,12 @@ app.filter('partition', function() {
    return applist;
   };
   return part;
+});
+
+app.directive('search-input', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+          console.log(event);
+        });
+    };
 });

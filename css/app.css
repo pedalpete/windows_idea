@@ -68,7 +68,7 @@ body.desktop #apps{
 
 }
 
-.desktop #apps h1, .apps #desktop h1 {
+.desktop #apps h1, #desktop h1 {
 	transition-property: all;
   	transition-duration: 250ms;
   	transition-timing-function: ease-in-out;
@@ -76,6 +76,10 @@ body.desktop #apps{
 	position: absolute;
 	top: 20px;
 	left:15px;
+}
+
+.desktop #desktop h1 {
+	font-size:33pt;
 }
 
 ul.apps {
