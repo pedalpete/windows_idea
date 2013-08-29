@@ -8,7 +8,7 @@
 		<script src="js/angular.js"></script>
 		<script src="js/controllers.js"></script>
 	</head>
-	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search'}">
+	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search', search: activeView=='temp'}">
 		<div id="desktop">
 			
 			<h1>Desktop</h1>
@@ -23,9 +23,32 @@
 						<div class="name">{{app.name}}</div>
 					</li>
 				</ul>
+				<div class="store-apps search-show">
+					<h3>App Store Results</h3>
+				<ul>
+					<li ng-repeat="app in [0,1,2,3,4]">
+				  	<span>{{search.name}} {{$index+1}} app</span>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<div id="file-results" class="search-show">
+				<h5>Your Files</h5>
+				<ul>
+					<li ng-repeat="file in [0,1,2,3,4,5,6]">
+						<span>{{search.name}}</span>
+					</li>
+				</ul>
+				<h5>Bing Search Results</h5>
+				<ul>
+					<li ng-repeat="file in [0,1,2,3,4]">
+						<span>{{search.name}}</span>
+					</li>
+				</ul>
 			</div>
 			<div class="modal-cover" ng-click="toggleActive()"></div>
 		</div>
+
 		<input type="text" id="search" name="search" ng-keydown="startSearch()" placeholder="search" ng-model="search.name"/>
 	
 	</body>
