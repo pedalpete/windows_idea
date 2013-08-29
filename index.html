@@ -8,22 +8,22 @@
 		<script src="js/angular.js"></script>
 		<script src="js/controllers.js"></script>
 	</head>
-	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', apps:activeView=='temp'}">
+	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search'}">
 		<div id="desktop">
 			
 			<h1>Desktop</h1>
-			<div class="modal-cover" ng-click="toggleActive()"></div>
+			<div class="modal-cover" ng-click="toggleActive('desktop')"></div>
 		</div>
 		<div class="active" id="apps" ng-controller="AppListCtrl" >
 			
 			<h1>Apps</h1>
-			<ul class="apps search">
-				<div ng-repeat="block in apps | filter:search | partition:6" class="app-block" >
-					<li ng-repeat="app in block" class="app-tile" ng-class="{double:app.width=='double'}">
+			<div class="scroll-apps">
+				<ul class="apps search">
+					<li ng-repeat="app in apps | filter:search" class="app-tile" ng-class="{double:app.width=='double'}">
 						<div class="name">{{app.name}}</div>
 					</li>
-				</div>
-			</ul>
+				</ul>
+			</div>
 			<div class="modal-cover" ng-click="toggleActive()"></div>
 		</div>
 		<input type="text" id="search" name="search" ng-keydown="startSearch()" placeholder="search" ng-model="search.name"/>

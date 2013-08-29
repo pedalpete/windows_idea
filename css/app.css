@@ -49,22 +49,33 @@ body.desktop #apps{
 	background-color: grey;
 }
 
-#apps ul {
+
+
+#apps div.scroll-apps {
+
 	height: 450px;
+	width: 100%;
 	overflow-x: scroll;
 	overflow-y: hidden;
-	margin-left:30px;
+	padding-left:80px;
 	padding-bottom:40px;
 	position: absolute;
 	top: 120px;
 }
 
-.desktop #desktop h1,.apps #apps h1 {
+.search #apps div.scroll-apps {
+
+	width: 400px;
+}
+
+
+.desktop #desktop h1, #apps h1 {
 	transition-property: all;
   	transition-duration: 250ms;
   	transition-timing-function: ease-in-out;
   	position: relative;
   	left: 50px;
+  	padding-left: 40px;
 
 }
 
@@ -84,12 +95,6 @@ body.desktop #apps{
 
 ul.apps {
 	list-style-type: none;
-}
-.app-block {
-	float: left;
-	height: 100%;
-	width: 250px;
-	margin-left: 50px;
 }
 
 .app-tile {

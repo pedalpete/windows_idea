@@ -1,14 +1,17 @@
 var app = angular.module('app',[]);
 
 app.controller('DesktopCtrl',['$scope',function($scope) {
-		$scope.views=['apps','desktop','temp']
+		$scope.views=['apps','desktop','temp','search']
 		$scope.activeView=$scope.views[0]
-		$scope.toggleActive = function(){
+		$scope.toggleActive = function(panel){
 			if($scope.activeView==$scope.views[0]){
 				$scope.activeView=$scope.views[1];
 				$scope.search.name='';
-			} else {
+			} else if($scope.activeView==$scope.views[1]) {
 				$scope.activeView=$scope.views[0]
+			} else if($scope.activeView!=$scope.views[1] && panel=='desktop'){
+				$scope.activeView=$scope.views[1];
+				$scope.search.name='';
 			}
 		}
 		$scope.$watch('search.name',function(){
@@ -16,9 +19,19 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 
 			if($scope.activeView==$scope.views[1] && search.length>0){
 				$scope.activeView=$scope.views[2];
+			
+			} else if ($scope.activeView==$scope.views[0] && search.length>0){
+
+				$scope.activeView=$scope.views[3];
+			
 			}
+
 			 if (search.length==0 && $scope.activeView==$scope.views[2]){
 				$scope.activeView=$scope.views[1];
+				
+			} else if (search.length==0 && $scope.activeView==$scope.views[3]){
+				$scope.activeView=$scope.views[0];
+				
 			}
 		})
 	}]);
