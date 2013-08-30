@@ -4,6 +4,9 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 		$scope.views=['apps','desktop','temp','search']
 		$scope.activeView=$scope.views[0]
 		$scope.toggleActive = function(panel){
+			if($scope.showSettings=='show'){
+				$scope.toggleSettings();
+			}
 			if($scope.activeView==$scope.views[0]){
 				$scope.activeView=$scope.views[1];
 				$scope.search.name='';
@@ -14,9 +17,21 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 				$scope.search.name='';
 			}
 		}
+
+		$scope.showSettings='hide';
+		$scope.toggleSettings = function(){
+			if($scope.showSettings=='show'){
+				$scope.showSettings='hide';
+			} else {
+				$scope.showSettings='show';
+				if($scope.search.name.length>0){
+					$scope.search.name='';
+				}
+			}
+
+		}
 		$scope.$watch('search.name',function(){
 			var search = $scope.search.name;
-
 			if($scope.activeView==$scope.views[1] && search.length>0){
 				$scope.activeView=$scope.views[2];
 			
@@ -25,7 +40,9 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 				$scope.activeView=$scope.views[3];
 			
 			}
-
+			if(search.length>0 && $scope.showSettings=='show'){
+				$scope.showSettings='hide';
+			}
 			 if (search.length==0 && $scope.activeView==$scope.views[2]){
 				$scope.activeView=$scope.views[1];
 				
@@ -61,6 +78,9 @@ app.controller('AppListCtrl',['$scope',function($scope){
 
 
 	}]);
+app.controller('SettingsCtrl',function($scope){
+
+})
 
 app.directive('search-input', function () {
     return function (scope, element, attrs) {
@@ -68,4 +88,27 @@ app.directive('search-input', function () {
           console.log(event);
         });
     };
+});
+
+app.directive('clock', function($timeout, dateFilter){
+    return function(scope, element, attrs){
+       var timeoutId; 
+ 
+      // schedule update in one second
+      function updateLater() {
+        // save the timeoutId for canceling
+        timeoutId = $timeout(function() {
+          element.text(dateFilter(new Date(), 'HH:mm dd/MM'));
+          updateLater(); // schedule another update
+        }, 1000);
+      }
+        
+      // listen on DOM destroy (removal) event, and cancel the next UI update
+      // to prevent updating time ofter the DOM element was removed.
+      element.bind('$destroy', function() {
+        $timeout.cancel(timeoutId);
+      });
+ 
+      updateLater(); // kick off the UI update process.
+    }
 });

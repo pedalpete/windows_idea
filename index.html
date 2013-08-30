@@ -4,11 +4,12 @@
 		<meta charset="utf-8">
 		<title>A new take on Windows 8</title>
 		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/app.css">
 		<script src="js/angular.js"></script>
 		<script src="js/controllers.js"></script>
 	</head>
-	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search', search: activeView=='temp'}">
+	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search', temp: activeView=='temp'}">
 		<div id="desktop">
 			
 			<h1>Desktop</h1>
@@ -50,6 +51,27 @@
 		</div>
 
 		<input type="text" id="search" name="search" ng-keydown="startSearch()" placeholder="search" ng-model="search.name"/>
+
+		<div id="settings" ng-click="toggleSettings()" ng-class="{show: showSettings=='show'}">
+			<div id="settings-list">
+				<div id="notifications" class="option"><i class="icon-bell icon-large"></i></div>
+				<div id="sound" class="option"><i class="icon-volume-up icon-large"></i></div>
+				<div id="logout" class="option"><i class="icon-lock icon-large"></i></div>
+				<div id="power" class="option"><i class="icon-off icon-large"></i></div>
+				<div id="help" class="option"><i class="icon-question-sign icon-large"></i></div>
+			</div>
+			<div id="main-settings">
+				<img src="images/profile-small.png"/>
+				<div clock class="option"></div>
+				<div id="wifi" class="option">
+					<i class="icon-signal icon-2x"></i>
+				</div>
+				<div id="battery" class="option">
+					<div class="top"></div>
+					<div class="base"></div>
+				</div>
+			</div>	
+		</div>
 	
 	</body>
 </html>
