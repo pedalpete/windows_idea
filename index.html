@@ -10,6 +10,8 @@
 		<script src="js/controllers.js"></script>
 	</head>
 	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search', temp: activeView=='temp'}">
+
+	<div id="appView" ng-class="{open: appView.state=='open',double: appView.width=='double',growapp: appView.state=='grow'}" ng-style="{'left':appView.xpos+'px','top':appView.ypos+'px'}"><div ng-click="closeApp()">x</div></div>
 		<div id="desktop">
 			
 			<h1>Desktop</h1>
@@ -20,7 +22,7 @@
 			<h1>Apps</h1>
 			<div class="scroll-apps">
 				<ul class="apps search">
-					<li ng-repeat="app in apps | filter:search" class="app-tile" ng-class="{double:app.width=='double'}">
+					<li ng-repeat="app in apps | filter:search" class="app-tile" ng-class="{double:app.width=='double', openpage:app.state=='open'}" ng-click="animateApp($event,app)">
 						<div class="name">{{app.name}}</div>
 					</li>
 				</ul>
@@ -72,6 +74,6 @@
 				</div>
 			</div>	
 		</div>
-	
+		
 	</body>
 </html>

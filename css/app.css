@@ -111,6 +111,7 @@ ul.apps {
 .app-tile.double {
 	width: 208px;
 }
+
 .app-tile .name{
 	position: absolute;
 	bottom: 0;
@@ -246,4 +247,49 @@ div#power>div.circle {
 	border-left: 2px solid #fff;
 	border-right: 2px solid #fff;
 	border-bottom: 2px solid #fff;
+}
+
+
+/* opening apps */
+.openpage{
+	 transform-style: preserve-3d;
+  	transition: all 0.3s linear;
+  	-webkit-transform:scaleX(0.8) scaleY(0.8) rotateY(180deg);
+}
+
+.flippage{
+	transform-style: preserve-3d;
+  transition: all 0.3s linear;
+  -webkit-transform: rotateY(180deg);
+}
+
+
+div#appView {
+	position: absolute;
+	top:0px;
+	left:0px;
+	height:80px;
+	min-width:80px;
+	background-color: #fff;
+	z-index:100;
+	display:none;
+}
+
+div#appView.open{
+	display:block;
+}
+
+
+#appView.double {
+	width: 167px;
+}
+
+div#appView.growapp {
+	display:block;
+	-webkit-transition: all 0.4s linear;
+	box-sizing: border-box;
+	z-index:100;
+	width:100%;
+	height: 100%;
+	
 }

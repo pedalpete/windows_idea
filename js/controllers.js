@@ -51,6 +51,20 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 				
 			}
 		})
+
+		$scope.setAppView=function(appDetails){
+			$scope.appView=appDetails;
+			 
+			setTimeout(function(){
+				$scope.appView.state='grow';
+				$scope.appView.xpos=0;
+				$scope.appView.ypos=0;}
+				,600);
+		}
+
+		$scope.closeApp=function(){
+			$scope.appView.state='';
+		}
 	}]);
 app.controller('AppListCtrl',['$scope',function($scope){
 		$scope.apps = [
@@ -74,13 +88,23 @@ app.controller('AppListCtrl',['$scope',function($scope){
 			 "width":"single"},
 			{"name":"cmd",
 			 "width":"single"},
-		]
+		];
+
+		$scope.animateApp=function($event,app){
+			app.state='open';
+
+			setTimeout(function(){$scope.setAppView({state: 'open',
+						xpos: $event.x-$event.offsetX+10,
+						ypos: $event.y-$event.offsetY+10,
+						width: app.width})},300);
+				
+			setTimeout(function(){app.state='flip'},2000);
+			return 
+		}
 
 
 	}]);
-app.controller('SettingsCtrl',function($scope){
 
-})
 
 app.directive('search-input', function () {
     return function (scope, element, attrs) {
@@ -89,6 +113,7 @@ app.directive('search-input', function () {
         });
     };
 });
+
 
 app.directive('clock', function($timeout, dateFilter){
     return function(scope, element, attrs){
