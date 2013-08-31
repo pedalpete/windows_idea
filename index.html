@@ -22,7 +22,8 @@
 			<h1>Apps</h1>
 			<div class="scroll-apps">
 				<ul class="apps search">
-					<li ng-repeat="app in apps | filter:search" class="app-tile" ng-class="{double:app.width=='double', openpage:app.state=='open'}" ng-click="animateApp($event,app)">
+					<li ng-repeat="app in apps | filter:search" class="app-tile {{app.color}}" ng-class="{double:app.width=='double', openpage:app.state=='open'}" ng-click="animateApp($event,app)">
+						<div class="hold-icon"><i class="{{app.icon}} icon-4x"></i></div>
 						<div class="name">{{app.name}}</div>
 					</li>
 				</ul>
