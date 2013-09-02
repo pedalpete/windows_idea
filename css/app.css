@@ -1,13 +1,13 @@
 #search {
 	position: absolute;
 	top: 50px;
-	right: 16%;
+	right: 11%;
 	width: 25%;
 }
 
 .modal-cover{
 	box-sizing:border-box;
-	color: rgba(0,0,0,0.5);
+	color: rgba(255,255,255,0.4);
 	height: 100%;
 	width: 100%;
 	position:absolute;
@@ -23,7 +23,10 @@
 	box-sizing: border-box;
 	float: left;
 	position:absolute;
-	background-color: red;
+	background-image: url('/images/back3.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #888;
 }
 body.desktop #desktop{
 	transition-property: all;
@@ -36,6 +39,9 @@ body.desktop #desktop .modal-cover, body.apps #apps .modal-cover{
 	display:none;
 }
 
+body.desktop #apps .modal-cover, body.apps #desktop .modal-cover {
+	z-index:150;
+}
 body.search #apps .modal-cover, body.temp #apps .modal-cover {
 	z-index: 40;
 }
@@ -51,8 +57,11 @@ body.desktop #apps{
 	position:absolute;
 	right:0px;
 	float:left;
-	background-color: grey;
 	overflow:hidden;
+	background-image: url('/images/back1.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #888;
 }
 
 
@@ -63,8 +72,7 @@ body.desktop #apps{
 	width: 100%;
 	max-width: 1200px;
 	min-width: 600px;
-	overflow-x: scroll;
-	overflow-y: hidden;
+	overflow: hidden;
 	margin-left:80px;
 	padding-bottom:40px;
 	position: absolute;
@@ -140,24 +148,31 @@ ul.apps {
 .search div.search-show, .temp div.search-show {
 	clear:both;
 	display: block;
-	margin-left: 30px;
+	margin-left: 10px;
 }
 
 .search div#file-results, .temp div#file-results {
 	position: fixed;
-	right: 16%;
+	right: 11%;
 	top: 100px;
-	background-color: rgba(255,255,255,0.5);
-	width:335px;
+	background-color: rgba(255,255,255,0.8);
+	width:25%;
 	padding: 5px;
 	z-index:50;
 
 }
 
-div#file-results ul{
-	list-style-type: none
+ul{
+	list-style-type: none;
+
+	margin:0;
 }
 
+.store-apps [class^="icon-"] {
+	vertical-align: middle;
+	color: orange;
+	margin-right: 5px;
+}
 #settings {
 	position: absolute;
 	bottom: 0;
@@ -165,11 +180,11 @@ div#file-results ul{
 	height: 45px;
 	min-width: 220px;
 	overflow: hidden;
+	color:#888;
 }
 
 .desktop #settings, #settings.show {
 	background-color: rgba(0,0,0,0.7);
-	color: rgba(255,255,255,0.7);
 }
 
 #main-settings{
@@ -177,6 +192,7 @@ div#file-results ul{
 	bottom: 0px;
 	width:100%;
 	height:45px;
+	z-index:200;
 }
 #settings.show{
 	height: 100%;
@@ -219,14 +235,14 @@ div#battery {
 
 div#battery div.top {
 	float: left;
-	background-color: rgba(0,0,0,0.7);
+	background-color: #888;
 	height: 3px;
 	width: 10px;
 	margin-left: 18px;
 }
 
 div#battery div.base {
-	background-color: rgba(0,0,0,0.7);
+	background-color: #888;
 	height: 26px;
 	width: 15px;
 	margin-left: auto;
@@ -280,12 +296,13 @@ div#appView {
 	background-color: #fff;
 	z-index:100;
 	opacity: 0;
+	-webkit-transition: all 0.2s ease-in;
 	display:none;
 }
 
 div#appView.open{
 	display:block;
-}
+	}
 
 
 #appView.double {
@@ -294,9 +311,7 @@ div#appView.open{
 
 div#appView.growapp {
 	display:block;
-	-webkit-transition: all 0.3s linear;
-	box-sizing: border-box;
-	z-index:100;
+	z-index:230;
 	width:100%;
 	height: 100%;
 	opacity:1;

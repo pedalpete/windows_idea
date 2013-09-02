@@ -58,12 +58,16 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 
 		$scope.setAppView=function(appDetails){
 			$scope.appView=appDetails;
-			 
+			 if(appDetails.width!=undefined){
+			 	var duration = 200;
+			 }else {
+			 	var duration=0;
+			 }
 			setTimeout(function(){
 				$scope.appView.state='grow';
 				$scope.appView.xpos=0;
 				$scope.appView.ypos=0;}
-				,600);
+				,duration);
 		}
 
 		$scope.closeApp=function(){

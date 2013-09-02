@@ -30,22 +30,24 @@
 				<div class="store-apps search-show">
 					<h3>App Store Results</h3>
 				<ul>
-					<li ng-repeat="app in [0,1,2,3,4]">
+					<li ng-repeat="app in [0,1,2,3,4]" ng-click="animateApp($event,{search:true})">
+					<i class="icon-check-empty icon-2x"></i>
 				  	<span>{{search.name}} {{$index+1}} app</span>
 					</li>
 				</ul>
 				</div>
 			</div>
 			<div id="file-results" class="search-show">
-				<h5>Your Files</h5>
 				<ul>
-					<li ng-repeat="file in [0,1,2,3,4,5,6]" ng-click="animateApp($event,file)">
+				<div>Your Files</div>
+								<li ng-repeat="file in [0,1,2,3,4,5,6]" ng-click="animateApp($event,{search:true})">
+						<i class="icon-file-text"></i>
 						<span>{{search.name}}</span>
 					</li>
-				</ul>
-				<h5>Bing Search Results</h5>
-				<ul>
-					<li ng-repeat="file in [0,1,2,3,4]">
+
+				<div><img src="images/bing.png" width="30px"/> Search Results</div>
+					<li ng-repeat="file in [0,1,2,3,4]" ng-click="animateApp($event,{search:true})">
+						<i class="icon-check-empty"></i>
 						<span>{{search.name}}</span>
 					</li>
 				</ul>
