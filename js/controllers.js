@@ -4,8 +4,12 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 		$scope.views=['apps','desktop','temp','search']
 		$scope.activeView=$scope.views[0]
 		$scope.toggleActive = function(panel){
+
 			if($scope.showSettings=='show'){
 				$scope.toggleSettings();
+			}
+			if($scope.activeView==$scope.views[3] && $scope.search.name.length>0 || $scope.activeView==$scope.views[2] && $scope.search.name.length>0 ){
+				$scope.search.name='';
 			}
 			if($scope.activeView==$scope.views[0]){
 				$scope.activeView=$scope.views[1];
@@ -111,15 +115,13 @@ app.controller('AppListCtrl',['$scope',function($scope){
 		];
 
 		$scope.animateApp=function($event,app){
-			app.state='open';
 
-			setTimeout(function(){$scope.setAppView({state: 'open',
+				$scope.setAppView({state: 'open',
 						xpos: $event.x-$event.offsetX+10,
 						ypos: $event.y-$event.offsetY+10,
-						width: app.width})},300);
-				
-			setTimeout(function(){app.state='flip'},2000);
-			return 
+						width: app.width});
+			app.state='open';
+			setTimeout(function(){app.state=''},2000);
 		}
 
 

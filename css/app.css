@@ -1,6 +1,6 @@
 #search {
 	position: absolute;
-	top: 10%;
+	top: 50px;
 	right: 16%;
 	width: 25%;
 }
@@ -35,6 +35,10 @@ body.desktop #desktop{
 body.desktop #desktop .modal-cover, body.apps #apps .modal-cover{
 	display:none;
 }
+
+body.search #apps .modal-cover, body.temp #apps .modal-cover {
+	z-index: 40;
+}
 body.desktop #apps{
 	width:15%;
 }
@@ -57,17 +61,20 @@ body.desktop #apps{
 
 	height: 450px;
 	width: 100%;
+	max-width: 1200px;
+	min-width: 600px;
 	overflow-x: scroll;
 	overflow-y: hidden;
-	padding-left:80px;
+	margin-left:80px;
 	padding-bottom:40px;
 	position: absolute;
 	top: 120px;
+	z-index:80;
 }
 
 .search #apps div.scroll-apps, .temp #apps div.scroll-apps {
-
-	width: 400px;
+	min-width: 145px;
+	max-width: 400px;
 }
 
 
@@ -113,8 +120,8 @@ ul.apps {
 }
 
 .app-tile div.hold-icon {
-	width: 53px;
-	margin-top: 10px;
+	width: 50px;
+	margin-top: 16px;
 	margin-left: auto;
 	margin-right: auto;
 	color: #D3D3D3;
@@ -137,11 +144,13 @@ ul.apps {
 }
 
 .search div#file-results, .temp div#file-results {
-	position: absolute;
-	right: 200px;
+	position: fixed;
+	right: 16%;
+	top: 100px;
 	background-color: rgba(255,255,255,0.5);
-	width:210px;
+	width:335px;
 	padding: 5px;
+	z-index:50;
 
 }
 
@@ -247,15 +256,6 @@ div#settings-list>div {
 	padding: 10px;
 }
 
-div#power>div.circle {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	border-left: 2px solid #fff;
-	border-right: 2px solid #fff;
-	border-bottom: 2px solid #fff;
-}
-
 
 /* opening apps */
 .openpage{
@@ -279,6 +279,7 @@ div#appView {
 	min-width:80px;
 	background-color: #fff;
 	z-index:100;
+	opacity: 0;
 	display:none;
 }
 
@@ -293,11 +294,12 @@ div#appView.open{
 
 div#appView.growapp {
 	display:block;
-	-webkit-transition: all 0.4s linear;
+	-webkit-transition: all 0.3s linear;
 	box-sizing: border-box;
 	z-index:100;
 	width:100%;
 	height: 100%;
+	opacity:1;
 	
 }
 
