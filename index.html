@@ -11,10 +11,85 @@
 	</head>
 	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search', temp: activeView=='temp'}">
 
-	<div id="appView" ng-class="{open: appView.state=='open',double: appView.width=='double',growapp: appView.state=='grow'}" ng-style="{'left':appView.xpos+'px','top':appView.ypos+'px'}"><div ng-click="closeApp()">x</div></div>
-		<div id="desktop">
+	<div id="appView" ng-class="{open: appView.state=='open',double: appView.width=='double',growapp: appView.state=='grow'}" ng-style="{'left':appView.xpos+'px','top':appView.ypos+'px'}">
+		<div class="word-header">
+			<div id="file-system">
+				<i class="icon-save icon-large"></i>
+				<i class="icon-envelope-alt icon-large"></i>
+				<i class="icon-cloud icon-large"></i>
+				<i class="icon-comment icon-large"></i>
+			</div>
+			<img src="/images/word-icon.png">
+			<span>Holistic Windows 8 Design Excercise</span>
+			<i class="icon-remove-sign icon-2x close" ng-click="closeApp()"></i>
+		</div>
+		<ul class="word-menus nav nav-list">
+			<li class="divider"></li>
+			<li id="styles">
+				<span class="light">Styles <i class="icon-angle-up icon-large"></i></span>
+				<span>Normal</span>
+				<h1>Heading 1</h1>
+				<h2>Heading 2</h2>
+				<h3>Title</h3>
+				<h4>Subtitle</h4>
+				<span class="light more"> ...</span>
+				<li>
+					<i class="icon-bold icon-large"></i>
+					<i class="icon-italic icon-large"></i>
+					<i class="icon-underline icon-large"></i>
+					<span class="light more"> ...</span>
+				</li>
+				<li>
+					<i class="icon-align-left icon-large"></i>
+					<i class="icon-align-center icon-large"></i>
+					<i class="icon-align-right icon-large"></i>
+					<i class="icon-align-justify icon-large"></i>
+				</li>
+				<li>
+					<i class="icon-list-ol icon-large"></i>
+					<i class="icon-list-ul icon-large"></i>
+					<i class="icon-indent-right icon-large"></i>
+					<i class="icon-indent-left icon-large"></i>
+
+				</li>
+			</li>
+			<li class="divider"></li>
+			<li><span class="light">Insert <i class="icon-angle-down icon-large"></i></span></li>
+			<li class="divider"></li>
+			<li><span class="light">Layout <i class="icon-angle-down icon-large"></i></span></li>
+			<li class="divider"></li>
+		</ul>
+		<div class="document">
+			<h1>A Windows 8 Design Excercise written in Angular.js</h1>
+			<p>Hi, and thanks for taking a few minutes to try out my UX design exercise for Windows 8. I’ve been using Windows 8 since it was released a year ago, and though I know Microsoft put a lot of work and theoretically risked a lot in the new design direction of Windows 8, I can’t help but feel that I’ve missed what they were trying to do. </p>
+			<p>I still spend most of my time on the desktop, I installed Pokki so that I had a way to access apps and settings.  I almost never find myself going to the new start-screen,  or using charms, and it wasn’t until toward the end of this exercise that I figured out how to go to the start screen from the desktop!</p>
+			<p>There are a few things I wanted to do with this design in a hope of making Windows 8 more holistic (I think disjointed is an apt description of how I feel it currently is).</p>
+			<p>This is far from perfect, I’d be very interested in hearing your feedback, or fork it on github and lets see what you come up with. This is also my first time using Angular. I've tried to do things the angular way, but it's still a learning curve.</p>
+
+			<h2>What you'll find in this design</h2>
+			<p>Desktop, Apps and Search are always visible and it is easy to switch between them. With almost all users on a wide-screen display these days, I don't think we need the entire screen to view the desktop or the app list. There will be outliers who do use all the pixels of their desktop, but I suspect they are a rarity. Personally, I have two columns of icons on the left of my desktop for my most frequent or sometimes random files, the rest is empty space. </p>
+			<p>Search is a great way for finding files and apps. This design puts search front and center instead of hiding it away in the charm bar. If you've got great local search, reliance on windows explorer is greatly diminished. I've also integrated app store search and bing search into the search interface, so a user can get everything in one action. </p>
+			<p>Settings and details still tucked away in the bottom right. I've always thought this was a good place for them. Clicking any of them opens the settings, bar, which is obviously not realistic and I'll change in the near future.</p>
+			<p>A better design-layout for office (or atleast word). As mentioned, we rarely make good use of our wide-screen displays, and I think using a side-bar with windows in an improvement over menu bars or the hideous taskbar I have in Office 2010.</p>
+
+			<h2>What's missing??</h2>
+			<p>Lots! This is just an exercise, but satisfies 90% of my personal usage, and hopefully yours.</p>
+			<p>The biggest thing missing at the moment is probably non-fullscreen apps. I actually really like how Apple handled this in OSX, and I don't think the world is ready to be forced into full-screen only apps yet.</p>
+
+		</div>
+	</div>
+		<div id="desktop" ng-controller="AppListCtrl">
 			
 			<h1>Desktop</h1>
+			<div class="word-doc" ng-click="animateApp($event,{taskbar:true})">
+				<img src="/images/word-icon.png"/>
+				<div>Holistic Windows 8 Design...</div>
+			</div>
+			<div id="taskbar">
+				<div class="app word" ng-click="animateApp($event,{desktop:true})"></div>
+				<div class="app excel" ng-click="animateApp($event,{desktop:true})"></div>
+				<div class="app outlook" ng-click="animateApp($event,{desktop:true})"></div>
+			</div>
 			<div class="modal-cover" ng-click="toggleActive('desktop')"></div>
 		</div>
 		<div class="active" id="apps" ng-controller="AppListCtrl" >
@@ -31,7 +106,7 @@
 					<h3>App Store Results</h3>
 				<ul>
 					<li ng-repeat="app in [0,1,2,3,4]" ng-click="animateApp($event,{search:true})">
-					<i class="icon-check-empty icon-2x"></i>
+					<i class="icon-check-empty icon-3x"></i>
 				  	<span>{{search.name}} {{$index+1}} app</span>
 					</li>
 				</ul>
@@ -59,11 +134,13 @@
 
 		<div id="settings" ng-click="toggleSettings()" ng-class="{show: showSettings=='show'}">
 			<div id="settings-list">
+				<div id="settings" class="option"><i class="icon-gear icon-large"></i></div>
 				<div id="notifications" class="option"><i class="icon-bell icon-large"></i></div>
 				<div id="sound" class="option"><i class="icon-volume-up icon-large"></i></div>
 				<div id="logout" class="option"><i class="icon-lock icon-large"></i></div>
 				<div id="power" class="option"><i class="icon-off icon-large"></i></div>
 				<div id="help" class="option"><i class="icon-question-sign icon-large"></i></div>
+
 			</div>
 			<div id="main-settings">
 				<img src="images/profile-small.png"/>

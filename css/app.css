@@ -183,8 +183,9 @@ ul{
 	color:#888;
 }
 
-.desktop #settings, #settings.show {
+#settings.show {
 	background-color: rgba(0,0,0,0.7);
+	z-index:100;
 }
 
 #main-settings{
@@ -259,7 +260,6 @@ div#settings-list {
 	bottom: 45px;
 	right:0px;
 	min-width:100%;
-	background-color:rgba(0,0,0,0.7);
 	padding-bottom: 30px;
 	padding-top: 30px;
 }
@@ -298,6 +298,7 @@ div#appView {
 	opacity: 0;
 	-webkit-transition: all 0.2s ease-in;
 	display:none;
+	overflow: hidden;
 }
 
 div#appView.open{
@@ -340,4 +341,179 @@ div#appView.growapp {
 
 .orange {
 	background-color: orange;
+}
+
+div.word-header {
+	display: fixed;
+	top:0px;
+	width: 100%;
+	height: 30px;
+	padding: 5px;
+	background-color: #333;
+	color: #888;
+	text-align: center;
+}
+.word-header img {
+	display: inline-block;
+	width:30px;
+	height:30px;
+	margin-right: 8px;
+}
+.close {
+	display: inline-block;
+	position: relative;
+	right: 5px;
+	color: white;
+}
+
+.word {
+	color: #4c66a4;
+}
+
+.word-menus {
+	width: 20%;
+	height: 100%;
+	box-sizing: border-box;
+	background-color: #888;
+	position: fixed;
+	left:0px;
+	padding-top: 15px;
+}
+
+.document{
+	position: fixed;
+	width: 80%;
+	height: 100%;
+	right:0px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	box-sizing: border-box;
+	padding-bottom: 200px;
+}
+
+.document h1, .document h2, .document p {
+	min-width: 200px;
+	max-width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#appView h1, #appView h2, #appView h3, #appView h4{
+	color: red;
+}
+
+#styles h1, #styles h2, #styles h3, #styles h4, #styles span:nth-child(2){
+display: block;
+background-color: #DEDEDE;
+margin:0,0,0,5px;
+padding: 5px;
+width: 100%;
+	}
+
+#appView h1 {
+	font-size: 28pt;
+}
+
+#appView h2 {
+	font-size: 18pt;
+}
+
+#appView h3 {
+	font-size: 14pt;
+}
+
+#appView h4 {
+	font-size: 10pt;
+}
+
+
+#desktop #taskbar {
+	position: absolute;
+	bottom: 0px;
+	left:0px;
+	height: 45px;
+	opacity: 0;
+	-webkit-transform: all 0.5s linear;
+}
+
+
+
+#taskbar>div.app {
+	float:left;
+	width: 45px;
+	height: 45px;
+}
+
+
+#taskbar>div{
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-left: 5px;
+}
+
+#taskbar>div.word {
+	background-image: url('/images/word-icon.png');
+}
+#taskbar>div.excel {
+	background-image: url('/images/excel.png');
+}
+#taskbar>div.outlook {
+	background-image: url('/images/outlook.png');
+}
+
+
+
+
+
+div.word-doc img {
+	width: 60px;
+	height: 60px;
+}
+div.word-doc {
+	-webkit-transition: all 0.5s linear;
+	position: absolute;
+	top: 200px;
+	left: 80px;
+	height: 60px;
+	max-width: 70px;
+	min-width:70px;
+	font-size: 8pt;
+	line-height: 10pt;
+	opacity: 0;
+
+}
+div.word-doc>div {
+	margin-top: 5px;
+	color: #fff;
+}
+
+
+
+.desktop #desktop div.word-doc,
+.desktop #desktop #taskbar {
+	opacity:1;
+	width: 100%;
+}
+
+div#file-system {
+	float:left;
+	margin-left: 10px;
+}
+ul.word-menus li [class^="icon-"], div#file-system [class^="icon-"] {
+	width: 34px;
+	padding-left: 10px;
+	display: inline-block;
+	color: #D2D2D2;
+}
+
+ul.word-menus li {
+	margin-top: 5px;
+}
+
+.light {
+	color: #D2D2D2;
+}
+
+.more {
+	float: right;
 }
