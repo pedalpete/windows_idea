@@ -23,7 +23,7 @@
 	box-sizing: border-box;
 	float: left;
 	position:absolute;
-	background-image: url('/images/back3.jpg');
+	background-image: url('../images/back3.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: #888;
@@ -58,7 +58,7 @@ body.desktop #apps{
 	right:0px;
 	float:left;
 	overflow:hidden;
-	background-image: url('/images/back1.jpg');
+	background-image: url('../images/back1.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	color: #888;
@@ -143,22 +143,22 @@ ul.apps {
 }
 
 .app-tile.word {
-	background-image:url('/images/word-icon.png');
+	background-image:url('../images/word-icon.png');
 	background-size: cover;
 }
 
 .app-tile.excel {
-	background-image:url('/images/excel.png');
+	background-image:url('../images/excel.png');
 	background-size: cover;
 }
 
 .app-tile.profile {
-	background-image:url('/images/profile.png');
+	background-image:url('../images/profile.png');
 	background-size: cover;
 }
 
 .app-tile.outlook {
-	background-image:url('/images/outlook.png');
+	background-image:url('../images/outlook.png');
 	background-size: cover;
 }
 
@@ -499,13 +499,13 @@ width: 100%;
 }
 
 #taskbar>div.word {
-	background-image: url('/images/word-icon.png');
+	background-image: url('../images/word-icon.png');
 }
 #taskbar>div.excel {
-	background-image: url('/images/excel.png');
+	background-image: url('../images/excel.png');
 }
 #taskbar>div.outlook {
-	background-image: url('/images/outlook.png');
+	background-image: url('../images/outlook.png');
 }
 
 
