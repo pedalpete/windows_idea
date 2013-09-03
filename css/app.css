@@ -142,13 +142,33 @@ ul.apps {
 	font-size: 8pt;
 }
 
+.app-tile.word {
+	background-image:url('/images/word-icon.png');
+	background-size: cover;
+}
+
+.app-tile.excel {
+	background-image:url('/images/excel.png');
+	background-size: cover;
+}
+
+.app-tile.profile {
+	background-image:url('/images/profile.png');
+	background-size: cover;
+}
+
+.app-tile.outlook {
+	background-image:url('/images/outlook.png');
+	background-size: cover;
+}
+
 .search-show {
 	display: none;
 }
 .search div.search-show, .temp div.search-show {
 	clear:both;
 	display: block;
-	margin-left: 10px;
+	margin-left: 5px;
 }
 
 .search div#file-results, .temp div#file-results {
@@ -157,11 +177,16 @@ ul.apps {
 	top: 100px;
 	background-color: rgba(255,255,255,0.8);
 	width:25%;
-	padding: 5px;
+	padding: 7px;
 	z-index:50;
 
 }
 
+.bing-img {
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+}
 div#file-results li, div.store-apps {
 	white-space: nowrap;
 	overflow: hidden;
@@ -173,6 +198,11 @@ ul{
 	margin:0;
 }
 
+.store-apps li {
+	padding: 3px;
+	background-color: rgba(255,255,255,0.8);
+	margin-bottom: 2px;
+}
 .store-apps [class^="icon-"] {
 	vertical-align: middle;
 	color: orange;
@@ -282,17 +312,21 @@ div#settings-list>div {
 .openpage{
 	 transform-style: preserve-3d;
   	transition: all 0.3s linear;
+  	transform:scaleX(0.8) scaleY(0.8) rotateY(180deg);
   	-webkit-transform:scaleX(0.8) scaleY(0.8) rotateY(180deg);
+  	-moz-transform:scaleX(0.8) scaleY(0.8) rotateY(180deg);
 }
 
 .flippage{
 	transform-style: preserve-3d;
   transition: all 0.3s linear;
   -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 
-div#appView {
+div#appView, div#pageView{
 	position: absolute;
 	top:0px;
 	left:0px;
@@ -302,20 +336,21 @@ div#appView {
 	z-index:100;
 	opacity: 0;
 	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
 	display:none;
 	overflow: hidden;
 }
 
-div#appView.open{
+div#appView.open, div#pageView.open{
 	display:block;
 	}
 
 
-#appView.double {
+#appView.double, div#pageView.double {
 	width: 167px;
 }
 
-div#appView.growapp {
+div#appView.growapp, div#pageView.growapp {
 	display:block;
 	z-index:230;
 	width:100%;
@@ -348,7 +383,7 @@ div#appView.growapp {
 	background-color: orange;
 }
 
-div.word-header {
+div.word-header, div.extpage-header {
 	display: fixed;
 	top:0px;
 	width: 100%;
@@ -369,6 +404,12 @@ div.word-header {
 	position: relative;
 	right: 5px;
 	color: white;
+}
+
+div#pageView iframe {
+	width: 100%;
+	height: 100%;
+	box-sizing:border-box;
 }
 
 .word {
@@ -438,6 +479,7 @@ width: 100%;
 	height: 45px;
 	opacity: 0;
 	-webkit-transform: all 0.5s linear;
+	transform: all 0.5s linear;
 }
 
 

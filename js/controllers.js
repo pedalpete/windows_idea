@@ -70,20 +70,33 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 				,duration);
 		}
 
+			$scope.setPageView=function(appDetails){
+			$scope.pageView=appDetails;
+	
+			setTimeout(function(){
+				$scope.pageView.state='grow';
+				$scope.pageView.xpos=0;
+				$scope.pageView.ypos=0;}
+				,200);
+		}
+
+		$scope.closeView=function(){
+			$scope.pageView.state='';
+		}
 		$scope.closeApp=function(){
 			$scope.appView.state='';
+		
 		}
 	}]);
 app.controller('AppListCtrl',['$scope',function($scope){
 		$scope.apps = [
-			{"name":"explorer",
-			 "width":"single"},
-			{"name":"mail",
-			 "width":"double",
-			 "icon":"icon-envelope-alt",
-			 "color":"orange"},
+			{"name":"outlook",
+			 "width":"single",
+			 "img":"outlook"},
 			{"name":"about",
-			 "width":"single"},
+			 "width":"single",
+			 "img":"profile",
+			 "page":"http://pedalpete.github.io/resume"},
 			{"name":"twitter",
 			 "width":"single",
 			 "icon":"icon-twitter-sign",
@@ -91,31 +104,49 @@ app.controller('AppListCtrl',['$scope',function($scope){
 			{"name":"facebook",
 			 "width":"single",
 			 "icon" : "icon-facebook-sign",
-			 "color":"blue"},
+			 "color":"blue",
+			 "img":""},
 			{"name":"github",
 			 "width":"double",
 			 "icon": "icon-github-alt",
-			 "color":"green"},
+			 "color":"green",
+			 "img":""},
 			 {"name":"linkedin",
 			 "width":"single",
 			 "icon":"icon-linkedin-sign",
-			 "color":"blue"},
+			 "color":"blue",
+			 "img":""},
 			{"name":"word",
-			 "width":"single"},
+			 "width":"single",
+			 "img":"word"},
 			{"name":"excel",
 			 "width":"single",
-			 "color":"green"},
-			{"name":"submlime txt",
-			 "width":"single",
-			 "color":"grey"},
+			 "color":"green",
+			"img":"excel"},
 			{"name":"cmd",
 			 "width":"single",
 			 "icon":"icon-terminal",
-			 "color":"grey"},
+			 "color":"grey",
+			 "img":""},
 			 {"name":"google+",
 			 "width":"double",
 			 "icon":"icon-google-plus",
-			 "color":"red"}
+			 "color":"red"},
+			 {"name":"skype",
+			 "width":"single",
+			 "icon":"icon-skype",
+			 "color":"light-blue",
+			 "img":""},
+			 {"name":"mail",
+			 "width":"double",
+			 "icon":"icon-envelope-alt",
+			 "color":"orange",
+			 "img":""},
+			 {"name":"pinterest",
+			 "width":"single",
+			 "icon":"icon-pinterest",
+			 "color":"red",
+			 "img":""}
 		];
 
 		$scope.storeapps = [
@@ -138,11 +169,19 @@ app.controller('AppListCtrl',['$scope',function($scope){
 
 
 		$scope.animateApp=function($event,app){
-
-				$scope.setAppView({state: 'open',
+				if(app.page){
+					$scope.setPageView({state: 'open',
+						xpos: $event.x-$event.offsetX+10,
+						ypos: $event.y-$event.offsetY+10,
+						width: app.width,
+						page: app.page,
+					    name: app.name});
+				} else {
+					$scope.setAppView({state: 'open',
 						xpos: $event.x-$event.offsetX+10,
 						ypos: $event.y-$event.offsetY+10,
 						width: app.width});
+				}
 			app.state='open';
 			setTimeout(function(){app.state=''},2000);
 		}

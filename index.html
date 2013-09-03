@@ -10,15 +10,21 @@
 		<script src="js/controllers.js"></script>
 	</head>
 	<body ng-controller="DesktopCtrl" ng-class="{desktop: activeView=='desktop', apps: activeView=='apps', search: activeView=='search', temp: activeView=='temp'}">
-
-	<div id="appView" ng-class="{open: appView.state=='open',double: appView.width=='double',growapp: appView.state=='grow'}" ng-style="{'left':appView.xpos+'px','top':appView.ypos+'px'}">
-		<div class="word-header">
-			<div id="file-system">
-				<i class="icon-save icon-large"></i>
-				<i class="icon-envelope-alt icon-large"></i>
-				<i class="icon-cloud icon-large"></i>
-				<i class="icon-comment icon-large"></i>
+		<div id="pageView" ng-class="{open: pageView.state=='open',double: pageView.width=='double',growapp: pageView.state=='grow'}" ng-style="{'left':pageView.xpos+'px','top':pageView.ypos+'px'}">
+			<div class="extpage-header">
+				<span>{{pageView.name}}</span>
+				<i class="icon-remove-sign icon-2x close" ng-click="closeView()"></i>
 			</div>
+			<iframe src="{{pageView.page}}"></iframe>
+		</div>
+		<div id="appView" ng-class="{open: appView.state=='open',double: appView.width=='double',growapp: appView.state=='grow'}" ng-style="{'left':appView.xpos+'px','top':appView.ypos+'px'}">
+			<div class="word-header">
+				<div id="file-system">
+					<i class="icon-save icon-large"></i>
+					<i class="icon-envelope-alt icon-large"></i>
+					<i class="icon-cloud icon-large"></i>
+					<i class="icon-comment icon-large"></i>
+				</div>
 			<img src="/images/word-icon.png">
 			<span>Holistic Windows 8 Design Exercise</span>
 			<i class="icon-remove-sign icon-2x close" ng-click="closeApp()"></i>
@@ -97,7 +103,7 @@
 			<h1>Apps</h1>
 			<div class="scroll-apps">
 				<ul class="apps search">
-					<li ng-repeat="app in apps | filter:search" class="app-tile {{app.color}}" ng-class="{double:app.width=='double', openpage:app.state=='open'}" ng-click="animateApp($event,app)">
+					<li ng-repeat="app in apps | filter:search" class="app-tile {{app.color}} {{app.img}}" ng-class="{double:app.width=='double', openpage:app.state=='open'}" ng-click="animateApp($event,app)">
 						<div class="hold-icon"><i class="{{app.icon}} icon-4x"></i></div>
 						<div class="name">{{app.name}}</div>
 					</li>
@@ -120,7 +126,7 @@
 						<span>{{search.name}} {{file.title}}</span>
 					</li>
 
-				<div><img src="images/bing.png" width="30px"/> Search Results</div>
+				<div><img src="images/bing.png" class="bing-img"/> Search Results</div>
 					<li ng-repeat="file in [0,1,2,3,4]" ng-click="animateApp($event,{search:true})">
 						<i class="icon-check-empty"></i>
 						<span>{{search.name}}  {{$index+1}} web-page </span>
