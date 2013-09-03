@@ -87,6 +87,8 @@ app.controller('DesktopCtrl',['$scope',function($scope) {
 			$scope.appView.state='';
 		
 		}
+
+		
 	}]);
 app.controller('AppListCtrl',['$scope',function($scope){
 		$scope.apps = [
