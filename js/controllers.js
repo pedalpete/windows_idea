@@ -118,6 +118,25 @@ app.controller('AppListCtrl',['$scope',function($scope){
 			 "color":"red"}
 		];
 
+		$scope.storeapps = [
+			{"title":"Example"},
+			{"title":"Sample"},
+			{"title":"Popular"},
+			{"title":"New"},
+			{"title":"Friends"}
+		]
+
+		$scope.myfiles = [
+			{"title":"Holistic Windows 8 Design Exercise"},
+			{"title":"Angular.js Notes"},
+			{"title":"Resume"},
+			{"title":"Monthly Budget"},
+			{"title":"Another local file result"},
+			{"title":"more local files"}
+		];
+		
+
+
 		$scope.animateApp=function($event,app){
 
 				$scope.setAppView({state: 'open',

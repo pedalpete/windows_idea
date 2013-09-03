@@ -162,6 +162,11 @@ ul.apps {
 
 }
 
+div#file-results li, div.store-apps {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 ul{
 	list-style-type: none;
 

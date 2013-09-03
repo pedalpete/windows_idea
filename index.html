@@ -20,7 +20,7 @@
 				<i class="icon-comment icon-large"></i>
 			</div>
 			<img src="/images/word-icon.png">
-			<span>Holistic Windows 8 Design Excercise</span>
+			<span>Holistic Windows 8 Design Exercise</span>
 			<i class="icon-remove-sign icon-2x close" ng-click="closeApp()"></i>
 		</div>
 		<ul class="word-menus nav nav-list">
@@ -60,7 +60,7 @@
 			<li class="divider"></li>
 		</ul>
 		<div class="document">
-			<h1>A Windows 8 Design Excercise written in Angular.js</h1>
+			<h1>A Windows 8 Design Exercise written in Angular.js</h1>
 			<p>Hi, and thanks for taking a few minutes to try out my UX design exercise for Windows 8. I’ve been using Windows 8 since it was released a year ago, and though I know Microsoft put a lot of work and theoretically risked a lot in the new design direction of Windows 8, I can’t help but feel that I’ve missed what they were trying to do. </p>
 			<p>I still spend most of my time on the desktop, I installed Pokki so that I had a way to access apps and settings.  I almost never find myself going to the new start-screen,  or using charms, and it wasn’t until toward the end of this exercise that I figured out how to go to the start screen from the desktop!</p>
 			<p>There are a few things I wanted to do with this design in a hope of making Windows 8 more holistic (I think disjointed is an apt description of how I feel it currently is).</p>
@@ -105,9 +105,9 @@
 				<div class="store-apps search-show">
 					<h3>App Store Results</h3>
 				<ul>
-					<li ng-repeat="app in [0,1,2,3,4]" ng-click="animateApp($event,{search:true})">
+					<li ng-repeat="app in storeapps" ng-click="animateApp($event,{search:true})">
 					<i class="icon-check-empty icon-3x"></i>
-				  	<span>{{search.name}} {{$index+1}} app</span>
+				  	<span>{{search.name}} {{$index+1}} {{app.title}} app</span>
 					</li>
 				</ul>
 				</div>
@@ -115,15 +115,15 @@
 			<div id="file-results" class="search-show">
 				<ul>
 				<div>Your Files</div>
-								<li ng-repeat="file in [0,1,2,3,4,5,6]" ng-click="animateApp($event,{search:true})">
+								<li ng-repeat="file in myfiles" ng-click="animateApp($event,{search:true})">
 						<i class="icon-file-text"></i>
-						<span>{{search.name}}</span>
+						<span>{{search.name}} {{file.title}}</span>
 					</li>
 
 				<div><img src="images/bing.png" width="30px"/> Search Results</div>
 					<li ng-repeat="file in [0,1,2,3,4]" ng-click="animateApp($event,{search:true})">
 						<i class="icon-check-empty"></i>
-						<span>{{search.name}}</span>
+						<span>{{search.name}}  {{$index+1}} web-page </span>
 					</li>
 				</ul>
 			</div>
